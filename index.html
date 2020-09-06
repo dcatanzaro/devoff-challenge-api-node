@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>Name planet: <span id="name_planet"></span></div>
+
+        <div>Terrain planet: <span id="terrain_planet"></span></div>
+    </body>
+
+    <script>
+        const url = "http://localhost:3000/api";
+
+        async function getPlanet() {
+            const response = await fetch(`${url}/planet/1`);
+            const planet = await response.json();
+
+            document.getElementById("name_planet").innerText = planet.name;
+            document.getElementById("terrain_planet").innerText =
+                planet.terrain;
+        }
+
+        getPlanet();
+    </script>
+</html>
